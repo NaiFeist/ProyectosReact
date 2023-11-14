@@ -77,8 +77,10 @@ function Home() {
             } else {
               console.log("Operación fallida :(")
             }
-            
+              handleGetItem()      
         }) 
+
+
     }
     const handleGetItem = (e) => {
         
