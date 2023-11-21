@@ -3,7 +3,7 @@ import { Grid, Paper, Avatar, Typography, Box, TextField, Button } from '@mui/ma
 import { useNavigate } from 'react-router-dom';
 
 //Importamos el useDispatch del react-redux
-import { useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 //Importamos el componente loginActions que está en el fichero storelogin.js
 import { loginActions } from '../store/storelogin';
 
@@ -25,24 +25,24 @@ const Login = () => {
 
   const isVerifiedUser = () => {  // ESTO ES DENTRO DE LA BD YA
     fetch(`http://localhost:3030/login?user=${username}&password=${password}`) // METER VARIABLE -> COMILLA CAMBADA
-    .then(response => response.json())
-    .then(response => {
-      if (response) {
-        if(Object.keys(response.data).length === 0) { // DEL OBJ(RESPONSE)Y  CLAVE ( DATA )  TAMAÑO  AQUI YA MIRAMOS EN LA BD
-          console.log('Datos Incorrectos') //esto es simplemente un mensaje para ver si entré en el if
+      .then(response => response.json())
+      .then(response => {
+        if (response) {
+          if (Object.keys(response.data).length === 0) { // DEL OBJ(RESPONSE)Y  CLAVE ( DATA )  TAMAÑO  AQUI YA MIRAMOS EN LA BD
+            console.log('Datos Incorrectos') //esto es simplemente un mensaje para ver si entré en el if
 
-        }else{
-          dispatch(loginActions.login({  // DISPATCH PARA PONER DATOS 
-            name: response.data.nombre,
-            rol: response.data.rol
+          } else {
+            dispatch(loginActions.login({  // DISPATCH PARA PONER DATOS 
+              name: response.data.nombre,
+              rol: response.data.rol
             }))
-          navigate('/home')
-                //console.log(response)  
-        }
+            navigate('/home')
+            //console.log(response)  
+          }
 
-      }
-    })
-    
+        }
+      })
+
   }
 
   const handleSubmit = (e) => {  // AL APRETAR EL BOTON
@@ -52,10 +52,10 @@ const Login = () => {
       console.log('Campos vacios')
     } else {
 
-    // Aquí puedes agregar la lógica para enviar los datos de inicio de sesión al backend
-    isVerifiedUser()   // IMPORTARLO AQUI 
-  }
-};
+      // Aquí puedes agregar la lógica para enviar los datos de inicio de sesión al backend
+      isVerifiedUser()   // IMPORTARLO AQUI 
+    }
+  };
 
   return (
     <Grid container component="main" sx={{ height: '100vh' }}>
