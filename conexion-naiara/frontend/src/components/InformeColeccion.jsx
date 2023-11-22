@@ -18,7 +18,7 @@ function InformeColeccion(props) {
             <MaterialTable
                 columns={col}
                 data={props.datos}
-                title="Fuerte Sacrificio de Tabla"
+                title="Fuert Sacrificio de Tabla"
                 renderSummaryRow={({ column, data }) =>
           column.field === "precio"
             ? {
